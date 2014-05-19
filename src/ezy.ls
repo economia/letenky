@@ -1,7 +1,7 @@
 page = require 'webpage' .create!
 require! fs
 require! system
-
+setTimeout phantom.exit, 120_s * 1e3
 [_, dest] = system.args
 now = Date.now!
 page.settings.userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36"
