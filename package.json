@@ -1,0 +1,17 @@
+{
+  "name": "Skeleton",
+  "version": "0.0.0",
+  "description": "",
+  "main": "www/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "CC-BY-NC-SA CZ 2.0",
+  "dependencies": {
+    "async": "~0.2.9",
+    "uglify-js": "~2.4.8",
+    "request": "~2.31.0",
+    "stylus": "~0.42.0"
+  }
+}
