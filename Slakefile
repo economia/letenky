@@ -183,7 +183,7 @@ refresh-manifest = (cb) ->
 task \build ->
     download-external-scripts!
     <~ download-external-styles
-    build-styles compression: no
+    # build-styles compression: no
     <~ build-all-scripts
     combine-scripts compression: no
 
