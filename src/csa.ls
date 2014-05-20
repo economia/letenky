@@ -12,15 +12,19 @@ saveAndQuit = ->
     fs.write "CSA-#{dest}-#{now}.html", html, "w"
     phantom.exit!
 
-increases = 0
-lastCount = 0
 check = ->
-    count = page.evaluate -> document.querySelectorAll ".flight" .length
-    if count > lastCount
-        ++increases
-        lastCount := count
+    valid = page.evaluate ->
+        valid = false
+        boxes = document.querySelectorAll ".box_long"
+        if boxes.length == 2
+            valid = true
+            for box in boxes
+                valid = valid and box.querySelectorAll ".flight" .length > 0
+        valid
 
-    if increases > 1
+
+    if valid
+        console.log "OK, saving"
         <~ setTimeout saveAndQuit, 3000
     else
         setTimeout check, 1000
