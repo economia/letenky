@@ -3,9 +3,9 @@ require! {
     fs
     async
 }
-destinations = <[ LGW]>
+destinations = <[ CDG ]> # LGW
 
-server = "vm"# && "l1" #&& "l2"
+server = "vm" #&& "l1"# && "l2"
 console.log server
 basedir = "#__dirname/../../data/#server"
 

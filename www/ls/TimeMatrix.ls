@@ -9,7 +9,8 @@ ig.TimeMatrix = class TimeMatrix
         cb?!
 
     draw: (xProp = 'checkDate') ->
-        console.log @data.0
+        # xProp = "timeDifference"
+        # console.log @data.0
         priceExtent = d3.extent @data.map (.price)
         checkExtent = d3.extent @data.map (.checkDate)
         arrivalExtent = d3.extent @data.map (.arrivalDate)
@@ -20,20 +21,25 @@ ig.TimeMatrix = class TimeMatrix
         color = d3.scale.linear!
             ..domain priceDomain
             ..range <[#ffffcc #ffeda0 #fed976 #feb24c #fd8d3c #fc4e2a #e31a1c #bd0026 #800026]>
+
         x = d3.scale.linear!
-            ..domain checkExtent
+            ..domain if xProp == 'timeDifference' then timeDifferenceExtent else checkExtent
             ..range [0 @width]
         y = d3.scale.linear!
             ..domain arrivalExtent
             ..range [0 @height]
-        console.log @element
+        # console.log @element
         # @data.length = 20
         @element.selectAll \div.pricepoint .data @data .enter!append \div
             ..attr \class \pricepoint
-            ..style "left" -> "#{Math.round x it.checkDate}px"
+            ..style "left" ~>
+                | xProp == "checkDate" => "#{Math.round x it.checkDate}px"
+                | xProp == "timeDifference" => "#{Math.round @width - x it.timeDifference}px"
             ..style "top" -> "#{Math.round y it.arrivalDate}px"
             ..style "background-color" -> color it.price
-            ..attr \data-tooltip ~> "#{@formatDate it.checkDate} - #{@formatDate it.arrivalDate} : #{it.price}"
+            ..attr \data-tooltip ~>
+                | xProp == "checkDate" => "#{@formatDate it.checkDate} - #{@formatDate it.arrivalDate} : #{it.price}"
+                | xProp == "timeDifference" => "#{Math.round it.timeDifference / 86400000} dnu pred odletem  #{@formatDate it.arrivalDate} : #{it.price}"
             # ..text (.price)
             #
     formatDate: ->
