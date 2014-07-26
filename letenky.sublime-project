@@ -41,6 +41,6 @@
     ],
     "settings":
     {
-        "build_on_save": 1
+        "build_on_save": 0
     }
 }
