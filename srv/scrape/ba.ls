@@ -6,7 +6,7 @@ require! {
 destinations = <[AMS CDG FRA LHR SVO ]>
 
 servers = ["vm" "l1" "l2"]
-destinations = [destinations[3]]
+destinations = [destinations[4]]
 server = servers[2]
 console.log server
 basedir = "#__dirname/../../data/#server"

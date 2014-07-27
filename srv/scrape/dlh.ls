@@ -3,11 +3,11 @@ require! {
     fs
     async
 }
-destinations = <[AMS CDG FRA LHR MOW ]>
+destinations = <[LHR AMS CDG FRA MOW ]>
 
 servers = ["vm" "l1" "l2"]
-destinations = [destinations[3]]
-server = servers[0]
+destinations = [destinations[4]]
+server = servers[1]
 console.log server
 basedir = "#__dirname/../../data/#server"
 airline = "DLH"
