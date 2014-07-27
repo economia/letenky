@@ -2,7 +2,7 @@ new Tooltip!watchElements!
 container = d3.select ig.containers.base
 # sources = <[ l1-EZY-CDG.csv l2-EZY-CDG.csv vm-EZY-CDG.csv ]>
 
-sources = <[ l1-CSA-AMS.csv l1-CSA-LHR.csv l1-CSA-CDG.csv ]>
+sources = <[ vm-BA-AMS.csv vm-BA-LHR.csv vm-BA-CDG.csv ]>
 # sources = <[ l1-EZY-LGW.csv ]>
 sources.forEach (source) ->
     m1 = container.append \div
@@ -23,7 +23,7 @@ sources.forEach (source) ->
         .on \change ->
             airline := @value
             redraw!
-        .selectAll \option .data <[EZY CSA]> .enter!append \option
+        .selectAll \option .data <[EZY CSA BA]> .enter!append \option
             ..attr \value -> it
             ..html -> it
             ..attr \selected -> if airline == it then "selected" else void
